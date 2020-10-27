@@ -1,15 +1,15 @@
 <h1>Welcome back, <%= current_user.name %></h1>
 
 <p>Looking for some inspiration? Check out these art supplies!</p>
-
+<br>
 <% @categories.each do |category| %>
-    <p><%= category.name %></p>
     <p><%= category.art_style %></p>
     <% category.supplies.each do |category| %>
         <p><%= category.medium %></p>
         <p><%= category.tools %></p>
     <% end %>
 <% end %>
+<br>
 
 <form action="/logout" method="POST">
     <input type="submit" value="Log Out">
