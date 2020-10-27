@@ -5,4 +5,7 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 run ApplicationController
-use Users
+use UsersContoller
+use CategoriesController
+use ArtSupplesController
+use Rack::MethodOverride
