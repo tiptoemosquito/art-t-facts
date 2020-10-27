@@ -4,6 +4,7 @@ class CreateCategories < ActiveRecord::Migration
       t.string :name
       t.string :art_style
       t.string :user_id 
+      t.string :supplies_id
     end
   end
 end

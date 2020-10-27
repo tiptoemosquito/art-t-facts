@@ -1,14 +1,9 @@
-<h2>Hey! Welcome to Art-T-Facts</h2>
-<p>Please login to enter.</p>
+<h1>Welcome to Coffee Corner!</h1>
 
-<nav>
+<br>
 
-    <% if logged_in? %>
-    <p>Hey there, <%=current_user.name%></p>
-    
-    <% else %>
-        <a href="/login">Login here</a><br><br>
-        <a href="/signup">New User? Sign Up here</a><br><br>
-    <% end %>
+<h3>Already a User?  <a href="/login">Log In</h3></a>
 
-</nav>
+<br>
+
+<h4>Not a User? <a href="/signup">Sign Up</h4>

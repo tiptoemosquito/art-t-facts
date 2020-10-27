@@ -13,10 +13,6 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
-  get '/categories' do
-    "Put something here!"
-  end
-
   helpers do
 
     def logged_in?
@@ -24,7 +20,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_user
-      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+      @user ||= User.find_by(id: session[:user_id]) if session[:user_id]
     end
 
   end
