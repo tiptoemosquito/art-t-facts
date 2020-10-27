@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20201027231743) do
 
   create_table "categories", force: :cascade do |t|
+    t.string "name"
     t.string "art_form"
     t.string "user_id"
     t.string "supplies_id"

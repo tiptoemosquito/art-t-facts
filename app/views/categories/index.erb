@@ -3,10 +3,12 @@
 <p>Looking for some inspiration? Check out these art supplies!</p>
 <br>
 <% @categories.each do |category| %>
+    <p><%= category.name %></p>
     <p><%= category.art_form %></p><br>
+
     <% category.supplies.each do |supply| %>
-        <p> <%= supply.medium %></p>
-        <p> <%= supply.tools %></p><br>
+        <p> Medium: <%= supply.medium %></p>
+        <p> Tools: <%= supply.tools %></p><br>
     <% end %>
 <% end %>
 <br>
