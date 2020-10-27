@@ -1,0 +1,2 @@
+class ArtSuppliesController < ApplicationController
+end
