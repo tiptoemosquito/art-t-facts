@@ -7,6 +7,6 @@ end
 
  use UsersContoller
  use CategoriesController
- use ArtSupplesController
+ use SupplesController
  use Rack::MethodOverride
  run ApplicationController

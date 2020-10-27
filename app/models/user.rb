@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
     has_secure_password
     has_many :categories
-    has_many :art_supplies, through: :categories
+    has_many :supplies, through: :categories
 end
