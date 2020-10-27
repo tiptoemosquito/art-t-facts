@@ -1,0 +1,14 @@
+<h2>Hey! Welcome to Art-T-Facts</h2>
+<p>Please signin, or signup if you are a new user!</p>
+
+<nav>
+
+    <% if logged_in? %>
+    <p>Hey there, <%=current_user.username%></p>
+    
+    <% else %>
+        <a href="/signup">Sign Up Now!</a>
+        <a href="/login">Welcome Back, login in!</a>
+    <% end %>
+
+</nav>
