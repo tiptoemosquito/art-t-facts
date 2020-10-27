@@ -1,3 +1,3 @@
 class Category < ActiveRecord::Base
-    has_many :art:supplies
+    has_many :art_supplies
 end
