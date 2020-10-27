@@ -1,18 +1,18 @@
 class UsersController < ApplicationController
 
     get '/' do 
-        erb :
+        erb :'/users/show'
     end
 
-    get 'signup' do
+    get '/signup' do
         if !logged_in?
-            erb :'user/create_user', locals: {mesage: "New? Sign Up now! Then sign in once completed!"}
+            erb :'users/create_user', locals: {mesage: "New? Sign Up now! Then sign in once completed!"}
         else 
             redirect to '/'
         end
     end
 
-    post 'signup' do 
+    post '/signup' do 
         if params[:username] == "" || params[:email] == || params[:password] == ""
             redirect to '/signup'
         else 
@@ -23,9 +23,9 @@ class UsersController < ApplicationController
         end
     end
 
-    get 'login' do
+    get '/login' do
         if !logged_in?
-            erb :'user/login'
+            erb :'users/login'
         else
             redirect to '/'
         end 
