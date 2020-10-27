@@ -13,6 +13,10 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
+  get '/categories' do
+    "Put something here!"
+  end
+
   helpers do
 
     def logged_in?
