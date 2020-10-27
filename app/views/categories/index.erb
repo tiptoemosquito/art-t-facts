@@ -1,16 +1,16 @@
-<h1>Hey there, <%= current_user.name %>!</h1>
+<h1>Welcome back, <%= current_user.name %></h1>
 
-<p>Welcome Back! Looking for some inspiration? Check out some art supplies here!</p>
+<p>Looking for some inspiration? Check out these art supplies!</p>
 
 <% @categories.each do |category| %>
     <p><%= category.name %></p>
     <p><%= category.art_style %></p>
-    <% @categories.supplies.each do |supply| %>
-        <p><%= supplies.medium %></p>
-        <p><%= supplies.tools %></p>
+    <% category.supplies.each do |category| %>
+        <p><%= category.medium %></p>
+        <p><%= category.tools %></p>
     <% end %>
 <% end %>
 
 <form action="/logout" method="POST">
-    <input type="submit" value="Logout">
+    <input type="submit" value="Log Out">
 </form>
