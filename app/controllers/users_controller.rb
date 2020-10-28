@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
         if @user 
             session[:user_id] = @user.id
-            redirect '/categories'
+            redirect '/categories/index'
         else 
             redirect '/login'
         end
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
         if @user && @user.authenticate(params[:password])
           session[:user_id] = @user.id
-          redirect '/categories'
+          redirect '/categories/index'
         else
           redirect '/signup'
         end
