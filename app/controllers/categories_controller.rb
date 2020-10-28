@@ -44,7 +44,7 @@ class CategoriesController < ApplicationController
         redirect "/categories/#{category.id}"
     end
 
-    delete '/category/:id' do
+    delete '/categories/:id' do
         @category = Category.find(params[:id])
         @category.destroy
     end
