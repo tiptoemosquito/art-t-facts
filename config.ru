@@ -7,5 +7,4 @@ end
 use Rack::MethodOverride
 use UsersController
 run ApplicationController
-run SuppliesController
 run CategoriesController
