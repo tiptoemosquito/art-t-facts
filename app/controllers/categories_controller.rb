@@ -1,14 +1,18 @@
 class CategoriesController < ApplicationController
 
-    # get '/categories' do
+    get '/categories' do
+        if logged_in?
+            @categories = current_user.categories.uniq
+            erb :'/categories/index'   
+        else
+            redirect '/login'
+        end
+    end
 
-    #     @categories = current_user.categories
-    #     erb :'/categories/index'
-    # end
+    get '/logout' do
+        redirect '/users'
+    end 
 
-    # post '/logout' do
-    #     redirect '/users'
-    # end
 #create
     get '/categories/new' do
         erb :'/categories/new'
@@ -22,18 +26,18 @@ class CategoriesController < ApplicationController
         )
         redirect "/categories/#{@category.id}"
     end
-#read
+# #read
     get '/categories/:id' do
         # @categories = current_user.categories
         @category = Category.find(params[:id])
-        erb :'/categories/show'
+        erb :'/categories/index'
     end
 
     get '/categories' do
         @categories = Category.all 
         erb :'/categories/index'
     end
-#update
+# #update
     get '/categories/:id/edit' do
         # @categories = current_user.categories
         @category = Category.find(params[:id])
@@ -49,7 +53,7 @@ class CategoriesController < ApplicationController
         )
         redirect "/categories/#{@category.id}"
     end
-#delete
+# #delete
     delete '/categories/:id' do
         # @categories = current_user.categories
         @category = Category.find(params[:id])

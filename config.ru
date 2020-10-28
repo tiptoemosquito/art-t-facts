@@ -8,3 +8,4 @@ use Rack::MethodOverride
 run ApplicationController
 use CategoriesController
 use UsersController
+use SuppliesController

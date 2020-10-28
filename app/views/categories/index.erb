@@ -1,14 +1,19 @@
 <h1>Welcome Back, <%= current_user.name %>!</h1>
 
 <p>Looking for some inspiration? These are your favorite art supplies!</p>
-<br>
-<% @categories.each do |category| %>
-    <p> Art Form: <%= category.art_form %></p><br>
-    <p> Medium: <%= category.medium %></p><br>
-    <p> Tools: <%= category.tools %></p><br>
-<% end %>
-<br>
 
-<form action="/logout" method="POST">
+
+<% @categories.each do |category| %>
+    <h2> Art Form: <%= category.art_form %></h2> <br>
+        <% category.supplies.each do |supply|%>
+            <h2> Medium: <%= supply.medium %></h2>
+            <h2> Tools: <%= supply.tools %></h2>
+        <% end %>
+    <a href="/categories/ <%= category.id %>/supplies/new"><button>Add New Supplies</a>
+<% end %>
+
+
+<form action="/logout" method="GET">
     <input type="submit" value="Log Out">
 </form>
+
