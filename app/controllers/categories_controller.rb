@@ -2,61 +2,53 @@ class CategoriesController < ApplicationController
 
     get '/categories' do
         if logged_in?
+            # binding.pry
             @categories = current_user.categories.uniq
-            erb :'/categories/index'   
+            erb :'categories/index'   
         else
             redirect '/login'
         end
     end
 
-    get '/logout' do
-        redirect '/users'
-    end 
-
 #create
     get '/categories/new' do
-        erb :'/categories/new'
+        @users = current_user.all
+        erb :'categories/new'
     end
 
     post '/categories' do
-        @category = Category.create(
-        art_form: params[:art_form], 
-        medium: params[:medium], 
-        tools: params[:tools]
+        @category = current_user.categories.create(
+        art_form: params[:art_form]
         )
-        redirect "/categories/#{@category.id}"
+        redirect "/categories"
     end
 # #read
     get '/categories/:id' do
-        # @categories = current_user.categories
-        @category = Category.find(params[:id])
-        erb :'/categories/index'
+        @categories = current_user.categories.find_by(id: params[:id])
+
+        if @categories
+            erb :'categories/show'
+        else
+            redirect '/categories'
+        end
     end
 
-    get '/categories' do
-        @categories = Category.all 
-        erb :'/categories/index'
-    end
 # #update
-    get '/categories/:id/edit' do
-        # @categories = current_user.categories
-        @category = Category.find(params[:id])
-        erb :'/categories/edit'
+    get '/categories/:id/edit' do #loads edit form 
+        @category = current_user.find_by(params[:id])
+        erb :'categories/edit'
     end
 
-    patch '/categories/:id' do
-        @category = Category.find(params[:id])
+    patch '/categories/:id' do #edits action
+        @category = current_user.find_by(params[:id])
         @category.update(
-        art_form: params[:art_form],  
-        medium: params[:medium], 
-        tools: params[:tools]
+        art_form: params[:art_form] 
         )
         redirect "/categories/#{@category.id}"
     end
 # #delete
     delete '/categories/:id' do
-        # @categories = current_user.categories
-        @category = Category.find(params[:id])
+        @category = current_user.find_by(params[:id])
         @category.destroy
         redirect '/categories'
     end

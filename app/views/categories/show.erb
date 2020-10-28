@@ -1,0 +1,10 @@
+<h2><%= @category.art_form %></h2>
+<hr>
+<br>
+<p><% @category.supplies.each do |supply|%>
+        <h3> Medium: <%= supply.medium %></h3><br>
+        <h4> Tools: <%= supply.tools %></h4><br></p>
+    <% end %>
+<br>
+<a href="/supplies/new">Add New Supplies<button></a>
+<a href="/categories">Go Back<button></a>
