@@ -3,9 +3,12 @@
 <form action="/category/<%= @category.id %>" method="POST">
     <input id="hidden" type="hidden" name="_method" value="patch">
 
-    <p>Art Form: <input type=text value="<%= category.art_form %>" name="art_form"></p>
-    <p>Medium: <input type=text value="<%= category.medium %>" name="medium"></p>
-    <p>Tools: <input type=text value="<%= category.tools %>" name="tools"></p>
-    <input type=submit name="Submit">
+    <p>Art Form: <input type=text value="<%= category.art_form %>" name="art_form"></p><br>
+    <br>
+    <p>Medium: <input type=text value="<%= category.medium %>" name="medium"></p><br>
+    <br>
+    <p>Tools: <input type=text value="<%= category.tools %>" name="tools"></p><br>
+    <br>
+    <input type=submit name="Submit"><br>
 
 </form>

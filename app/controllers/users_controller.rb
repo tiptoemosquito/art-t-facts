@@ -5,10 +5,12 @@ class UsersController < ApplicationController
     end
 
     post '/users/signup' do 
-        @user = User.create(name: params[:name], 
+        @user = User.create(
+        name: params[:name], 
         email: params[:email], 
         username: params[:username], 
-        password: params[:password])
+        password: params[:password]
+        )
 
         if @user 
             session[:user_id] = @user.id
@@ -17,6 +19,11 @@ class UsersController < ApplicationController
             redirect '/users/signup'
         end
     end
+
+    # get '/users/:id' do
+    #     erb :'/users/show'
+
+    # end
 
     get '/users/login' do
         erb :'/users/login'

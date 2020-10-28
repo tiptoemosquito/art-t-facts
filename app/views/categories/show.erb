@@ -1,8 +1,8 @@
 <h2>Here are your Art Categories!</h2>
 
-<p> Art Form: <%= @category.art_form%> </p><br>
-<p> Medium: <%= @category.medium%> </p><br>
-<p> Tools: <%= @category.tools%></p><br>
+<p> Art Form: <%= @category.art_form %> </p><br>
+<p> Medium: <%= @category.medium %> </p><br>
+<p> Tools: <%= @category.tools %> </p><br>
 
 <form action="/categories/<%= @category.id%>" method="POST">
     <input type="hidden" type="hidden" name="_method" value="DELETE">
