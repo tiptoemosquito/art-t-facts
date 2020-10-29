@@ -1,9 +1,12 @@
 class CategoriesController < ApplicationController
 
+#add authentication, logged_in? 
+
     get '/categories' do
         if logged_in?
             # binding.pry
             @categories = current_user.categories.uniq
+            @supplies = current_user.supplies.uniq
             erb :'categories/index'   
         else
             redirect '/login'
@@ -12,7 +15,6 @@ class CategoriesController < ApplicationController
 
 #create
     get '/categories/new' do
-        @users = current_user.all
         erb :'categories/new'
     end
 
@@ -24,33 +26,17 @@ class CategoriesController < ApplicationController
     end
 # #read
     get '/categories/:id' do
-        @categories = current_user.categories.find_by(id: params[:id])
-
-        if @categories
-            erb :'categories/show'
+        if logged_in?
+            @category = current_user.categories.find_by(id: params[:id])
+            if @category
+                @supplies = current_user.supplies.where(category_id: params[:id])
+                erb :'/categories/show'
+            else
+                redirect '/categories'
+            end
         else
-            redirect '/categories'
+            redirect '/login'
         end
-    end
-
-# #update
-    get '/categories/:id/edit' do #loads edit form 
-        @category = current_user.find_by(params[:id])
-        erb :'categories/edit'
-    end
-
-    patch '/categories/:id' do #edits action
-        @category = current_user.find_by(params[:id])
-        @category.update(
-        art_form: params[:art_form] 
-        )
-        redirect "/categories/#{@category.id}"
-    end
-# #delete
-    delete '/categories/:id' do
-        @category = current_user.find_by(params[:id])
-        @category.destroy
-        redirect '/categories'
     end
 
 

@@ -1,0 +1,13 @@
+<h6><%= @supply.category.art_form %></h6>
+<h2><%= @supply.medium %></h2>
+<h3><%= @supply.tools %></h3>
+
+
+<form action="/supplies/<%= @supply.id %>/delete" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input class="submit" type="submit" value="Delete">
+</form>
+
+<a href="/supplies/new"><button>Add New Supplies<button></a><br>
+<br>
+<a href="/categories"><button>Go Back To Categories<button></a><br>

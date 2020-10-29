@@ -1,0 +1,7 @@
+<h2>Edit Supplies</h2>
+<form method="POST" action="/supplies/<%=@supply.id%>">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    <label for="title">Title:</label>
+    <input type="text" name="title" value="<%= @supply.title %>">
+    <input type="submit" value="Submit">
+</form>

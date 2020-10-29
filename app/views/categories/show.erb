@@ -1,10 +1,17 @@
 <h2><%= @category.art_form %></h2>
 <hr>
 <br>
-<p><% @category.supplies.each do |supply|%>
-        <h3> Medium: <%= supply.medium %></h3><br>
-        <h4> Tools: <%= supply.tools %></h4><br></p>
+<p><% @supplies.each do |s|%>
+        <p> Medium: <%= s.medium %></p><br>
+        <p> Tools: <%= s.tools %></p><br>
+
+        <form action="/supplies/<%= s.id %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete">
+</form>
     <% end %>
+</p>
 <br>
-<a href="/supplies/new">Add New Supplies<button></a>
-<a href="/categories">Go Back<button></a>
+<a href="/supplies/new"><button>Add New Supplies<button></a><br>
+<br>
+<a href="/categories"><button>Go Back<button></a><br>

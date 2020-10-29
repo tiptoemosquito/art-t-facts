@@ -4,9 +4,8 @@
 
 
 <hr><br>
-<% @categories.each do |category| %>
-
-    <p><a href="/categories/<%= category.id %>"><%= category.art_form %></a></p>
+<% @categories.each do |c| %>
+    <p><a href="/categories/<%= c.id %>"><%= c.art_form %></a></p>
 <% end %>
 <br>
 <i>Click on 'add new category' to add a new category.</i><br>
