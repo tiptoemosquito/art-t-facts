@@ -1,8 +1,10 @@
-<form action="/supplies" method="POST">
+<form action="/categories/<%= @category_id %>/supplies" method="POST">
     
     <h3>Add New Supplies</h3><br>
     <input type="text" name="medium" placeholder="Medium"><br><br>
-    <input type="text" name="tools" placeholder="tools"><br><br>
+    <input type="text" name="tools" placeholder="Tools"><br><br>
     <input type="submit" value="Add New Supply">
 
 </form>
+<br>
+<a href="/categories"><button>Go Back</button></a><br>

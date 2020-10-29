@@ -1,6 +1,5 @@
 class CategoriesController < ApplicationController
 
-#add authentication, logged_in? 
 
     get '/categories' do
         if logged_in?
@@ -15,9 +14,13 @@ class CategoriesController < ApplicationController
 
 #create
     get '/categories/new' do
+        if logged_in?
         erb :'categories/new'
+        else
+            redirect '/login'
+        end
     end
-
+#add logged_in?
     post '/categories' do
         @category = current_user.categories.create(
         art_form: params[:art_form]
