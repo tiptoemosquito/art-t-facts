@@ -2,14 +2,17 @@
 <hr>
 <br>
     <% @supplies.each do |s|%>
-        <p> Medium: <%= s.medium %></p><br>
+        <p> Medium: <%= s.medium %></p>
         <p> Tools: <%= s.tools %></p><br>
 
         <form action="/supplies/<%= s.id %>" method="post">
-            <input type="hidden" name="_method" value="delete">
+            <input type="hidden" id="hidden" name="_method" value="DELETE">
             <input type="submit" value="Delete">
-        </form>
+        </form><br>
+        <a href="/supplies/<%= s.id %>/edit"><button>Edit</button></a>
     <% end %>
+
+<br>
 
 <br>
 <a href="/categories/<%= @category.id %>/supplies/new"><button>Add New Supplies</button></a><br>

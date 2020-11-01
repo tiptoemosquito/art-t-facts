@@ -1,5 +1,6 @@
 <h2>Edit Supplies</h2>
 <form method="POST" action="/supplies/<%= @supply.id %>">
+    <input type="hidden" id="hidden" name="_method" value="PATCH">
     <input type="text" name="medium" value="<%= @supply.medium %>"><br><br>
     <input type="text" name="tools" value="<%= @supply.tools %>"><br><br>
     <input type="submit" value="Submit">

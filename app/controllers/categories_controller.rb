@@ -20,7 +20,7 @@ class CategoriesController < ApplicationController
             redirect '/login'
         end
     end
-#add logged_in?
+
     post '/categories' do
         @category = current_user.categories.create(
         art_form: params[:art_form]

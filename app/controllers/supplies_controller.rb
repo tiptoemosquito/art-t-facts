@@ -46,20 +46,23 @@ class SuppliesController < ApplicationController
 
     patch '/supplies/:id' do
         if logged_in?
+            @supply = current_user.supplies.find_by(id: params[:id])
             if @supply.update(medium: params[:medium], tools: params[:tools])
-                rediect '/categories'
+                rediect "/categories"
             end
         else
             redirect "/supplies/#{@supply.id}"
         end 
     end
 #delete
-    delete '/categories/:category_id/supplies/:id' do
+    delete '/supplies/:id' do
         if logged_in?
             supply = current_user.supplies.find_by(id: params[:id])
-            supply.destroy
-
-            redirect '/categories'
+            category = supply.category
+            if supply
+                supply.destroy
+            end
+            redirect "/categories/#{category.id}"
         else
             redirect '/login'
         end 
