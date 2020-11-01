@@ -48,7 +48,7 @@ class SuppliesController < ApplicationController
         if logged_in?
             @supply = current_user.supplies.find_by(id: params[:id])
             if @supply.update(medium: params[:medium], tools: params[:tools])
-                rediect "/categories"
+                redirect  '/categories'
             end
         else
             redirect "/supplies/#{@supply.id}"
