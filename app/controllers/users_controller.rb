@@ -5,18 +5,18 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do 
-        @user = User.create(
+        @user = User.new(
         name: params[:name], 
         email: params[:email], 
         username: params[:username], 
         password: params[:password]
         )
 
-        if @user 
+        if @user
             session[:user_id] = @user.id
             redirect '/categories'
         else 
-            redirect '/login'
+            redirect '/signup'
         end
     end
 
