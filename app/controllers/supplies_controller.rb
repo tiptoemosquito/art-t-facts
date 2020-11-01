@@ -8,10 +8,8 @@ class SuppliesController < ApplicationController
             redirect '/login'
         end
     end
-#create
 
     get '/categories/:category_id/supplies/new' do
-        #  binding.pry
         if logged_in?
             @category_id = params[:category_id].to_i
             erb :'supplies/new'
@@ -22,7 +20,6 @@ class SuppliesController < ApplicationController
 
 
     post '/categories/:category_id/supplies' do
-        # binding.pry
         if logged_in?
             category = current_user.categories.find_by(id: params[:category_id])
             supply = category.supplies.create(medium: params[:medium],
@@ -33,7 +30,6 @@ class SuppliesController < ApplicationController
             redirect '/login'
         end
     end
-#edit
 
     get '/supplies/:id/edit' do
         if logged_in?
@@ -54,7 +50,7 @@ class SuppliesController < ApplicationController
             redirect "/supplies/#{@supply.id}"
         end 
     end
-#delete
+    
     delete '/supplies/:id' do
         if logged_in?
             supply = current_user.supplies.find_by(id: params[:id])

@@ -3,7 +3,6 @@ class CategoriesController < ApplicationController
 
     get '/categories' do
         if logged_in?
-            # binding.pry
             @categories = current_user.categories.uniq
             @supplies = current_user.supplies.uniq
             erb :'categories/index'   
@@ -12,7 +11,6 @@ class CategoriesController < ApplicationController
         end
     end
 
-#create
     get '/categories/new' do
         if logged_in?
         erb :'categories/new'
@@ -27,7 +25,7 @@ class CategoriesController < ApplicationController
         )
         redirect "/categories"
     end
-# #read
+
     get '/categories/:id' do
         if logged_in?
             @category = current_user.categories.find_by(id: params[:id])
