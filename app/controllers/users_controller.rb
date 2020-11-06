@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do 
+        # binding.pry
         @user = User.new(
         name: params[:name], 
         email: params[:email], 
@@ -13,6 +14,7 @@ class UsersController < ApplicationController
         )
 
         if @user
+            @user.save
             session[:user_id] = @user.id
             redirect '/categories'
         else 
