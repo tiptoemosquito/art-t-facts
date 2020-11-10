@@ -1,6 +1,5 @@
 class CategoriesController < ApplicationController
 
-
     get '/categories' do
         if logged_in?
             @categories = current_user.categories.uniq
@@ -20,10 +19,15 @@ class CategoriesController < ApplicationController
     end
 
     post '/categories' do
-        @category = current_user.categories.create(
+        @category = current_user.categories.new(
         art_form: params[:art_form]
         )
-        redirect "/categories"
+        if @category.save
+            redirect '/categories'
+        else
+            @error = "Whoops"
+            erb :'/categories/new'
+        end
     end
 
     get '/categories/:id' do
@@ -39,6 +43,5 @@ class CategoriesController < ApplicationController
             redirect '/login'
         end
     end
-
 
 end

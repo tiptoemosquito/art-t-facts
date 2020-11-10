@@ -13,14 +13,12 @@ class UsersController < ApplicationController
         password: params[:password]
         )
 
-        if @user
-            @user.save
+        if @user.save
             session[:user_id] = @user.id
             redirect '/categories'
         else 
             redirect '/signup'
         end
     end
-
 
 end
