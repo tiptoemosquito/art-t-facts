@@ -1,14 +1,5 @@
 class SuppliesController < ApplicationController
 
-    get "/supplies" do
-        if logged_in?
-            @supplies = current_user.supplies
-        erb :'/supplies/show'
-        else
-            redirect '/login'
-        end
-    end
-
     get '/categories/:category_id/supplies/new' do
         if logged_in?
             @category_id = params[:category_id].to_i
