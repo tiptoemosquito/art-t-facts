@@ -9,7 +9,7 @@ class SuppliesController < ApplicationController
         end 
     end
 
-    post '/categories/:category_id/supplies/new' do
+    post '/categories/:category_id/supplies' do
         if logged_in?
             category = current_user.categories.find_by(id: params[:category_id])
             supply = category.supplies.create(medium: params[:medium],
@@ -34,7 +34,7 @@ class SuppliesController < ApplicationController
         if logged_in?
             @supply = current_user.supplies.find_by(id: params[:id])
             if @supply.update(medium: params[:medium], tools: params[:tools])
-                redirect  '/categories'
+                redirect  "/categories"
             end
         else
             redirect "/supplies/#{@supply.id}"

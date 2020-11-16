@@ -12,21 +12,24 @@ class CategoriesController < ApplicationController
 
     get '/categories/new' do
         if logged_in?
-        erb :'categories/new'
+            erb :'categories/new'
         else
             redirect '/login'
         end
     end
 
     post '/categories' do
-        @category = current_user.categories.new(
-        art_form: params[:art_form]
-        )
-        if @category.save
-            redirect '/categories'
+        if logged_in?
+            @category = current_user.categories.create(
+            art_form: params[:art_form])
+            if @category
+                redirect '/categories'
+            else
+                @error = "Whoops"
+                erb :'/categories/new'
+            end
         else
-            @error = "Whoops"
-            erb :'/categories/new'
+            redirect '/login'
         end
     end
 
